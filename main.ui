@@ -59,6 +59,32 @@
      </property>
     </column>
    </widget>
+   <widget class="QPushButton" name="btn_add">
+    <property name="geometry">
+     <rect>
+      <x>12</x>
+      <y>10</y>
+      <width>97</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Добавить</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_change">
+    <property name="geometry">
+     <rect>
+      <x>132</x>
+      <y>10</y>
+      <width>85</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Изменить</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
