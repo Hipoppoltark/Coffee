@@ -4,13 +4,15 @@ import sys
 from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QMessageBox, QWidget
 from PyQt5.QtWidgets import QMainWindow, QTableWidgetItem
+from main_ui import Ui_MainWindow
+from addEditCoffeeForm_ui import Ui_MainWindow1
 
 
-class MyWidget(QMainWindow):
+class MyWidget(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi("main.ui", self)
-        self.con = sqlite3.connect("coffee.db")
+        self.setupUi(self)
+        self.con = sqlite3.connect("../data/coffee.db")
         cur = self.con.cursor()
         # Получили результат запроса, который ввели в текстовое поле
         result = cur.execute("SELECT id, name, roast_degree, ground_beans, flavor_description, price, packing_volume "
@@ -63,16 +65,16 @@ class MyWidget(QMainWindow):
             self.window.show()
 
 
-class EditWindowWidget(QMainWindow):  # Класс дополнительного окна
+class EditWindowWidget(QMainWindow, Ui_MainWindow1):  # Класс дополнительного окна
     def __init__(self, arg):
         super().__init__()
         self.initUI(arg)
 
     def initUI(self, main_window):
-        uic.loadUi("addEditCoffeeForm.ui", self)
+        self.setupUi(self)
 
         # Подключение db
-        self.con = sqlite3.connect("coffee.db")
+        self.con = sqlite3.connect("../data/coffee.db")
         cur = self.con.cursor()
 
         self.main_window = main_window
